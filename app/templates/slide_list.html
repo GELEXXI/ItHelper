@@ -1,0 +1,53 @@
+<!-- lesson_list.html -->
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    {{ lesson.title }}
+{% endblock title %}
+
+{% block content %}
+{% comment %} 
+    <h3>Урок"{{ lesson.title }}"</h3>
+    <hr> {% endcomment %}
+<div class="slide_container">
+
+
+    <div class="pagination ">
+        <a href="{%url "main:index" %}">
+        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="53.5" height="48" viewBox="0 0 24 24">
+            <path d="M 12 2.0996094 L 1 12 L 4 12 L 4 21 L 10 21 L 10 14 L 14 14 L 14 21 L 20 21 L 20 12 L 23 12 L 12 2.0996094 z"></path>
+        </svg>
+    </a>
+        {% if slides.has_previous %}
+             <a class="btn1" href="{% if slides.has_previous %}
+             ?page={{slides.previous_page_number}}
+             {% else %}#{% endif %}
+             ">❮</a>
+        {% endif %}
+    </div>
+        {% for slide in slides %}
+        <div class="slide">
+            <p>{{slide.content}}</p>
+            {% if slide.image  %}
+            <img src="{{slide.image.url }}" alt="{{slide.pk}}"> 
+            {% endif %}
+        </div>
+        <!-- <p>{{slide.pk}}<p> -->
+        
+        
+        {% endfor %}
+    <div class="pagination">
+        {% if slides.has_next %}
+
+        <a  class="btn2" href="{% if slides.has_next %}
+            ?page={{slides.next_page_number}}
+        {% else %}#{% endif %}
+        ">❯</a>
+        {% endif %}
+
+      </div>
+      
+</div>     
+{% endblock content %}
+

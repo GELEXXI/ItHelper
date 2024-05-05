@@ -1,0 +1,24 @@
+<!-- lesson_list.html -->
+{% extends "base.html" %}
+{% block title %}
+  {{ topic.topic }}
+{% endblock %}
+
+
+{% block content %}
+  <h1>Уроки для теми "{{ topic.topic }}"</h1>
+  <ol>
+    {% for lesson in lessons %}
+      <li><a href="{% url 'main:slide_list' lesson_id=lesson.id %}">{{ lesson.title }}</a></li>
+    {% endfor %}
+  </ol>
+  <select name="user_profile_color_1">
+    <option value="1">Синий</option>
+    <option value="2">Зеленый</option>
+    <option value="3">Желтый</option>
+    <option value="4">Красный</option>
+    <option value="5">Оранжевый</option>
+    <option value="6">Черный</option>
+  </select>
+{% endblock content %}
+

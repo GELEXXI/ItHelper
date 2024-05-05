@@ -1,0 +1,13 @@
+<!-- lesson_detail.html -->
+{% extends "base.html" %}
+
+<h1>{{ lesson.title }}</h1>
+<p>{{ lesson.content }}</p>
+
+{% if has_previous %}
+    <a href="{% url 'main:lesson_detail' lesson_id=previous_lesson.id %}">Попередній урок</a>
+{% endif %}
+
+{% if has_next %}
+    <a href="{% url 'main:lesson_detail' lesson_id=next_lesson.id %}">Наступний урок</a>
+{% endif %}

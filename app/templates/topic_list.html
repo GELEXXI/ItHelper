@@ -1,0 +1,16 @@
+<!-- topic_list.html -->
+{% extends "base.html" %}
+{% block title %}
+  Теми уроків
+{% endblock title %}
+
+{% block content %}
+  <h1>Теми уроків від {{ teacher.name }}</h1>
+  <ol>
+    {% for topic in topics %}
+      <li><a href="{% url 'main:lesson_list' topic_id=topic.id %}">{{ topic.topic }}</a></li>
+    {% endfor %}
+  </ol>
+
+{% endblock  %}
+

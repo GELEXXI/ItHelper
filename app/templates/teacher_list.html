@@ -1,0 +1,16 @@
+<!-- teacher_list.html -->
+{% extends "base.html" %}
+
+{% block title %}
+  Список викладачів
+{% endblock title %}
+
+{% block content %}
+  <h1>Список викладачів</h1>
+  <ol>
+    {% for teacher in teachers %}
+      <li><a href="{% url 'main:topic_list' teacher_id=teacher.id %}">{{ teacher.name }}</a></li>
+    {% endfor %}
+  </ol>
+{% endblock content %}
+
